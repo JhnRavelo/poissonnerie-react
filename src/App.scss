@@ -1,0 +1,31 @@
+@use "./variables";
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+}
+.main-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: variables.$blue-very-light;
+  .page-container {
+    display: flex;
+    .page-content {
+      padding: 10px;
+      flex: 1;
+    }
+  }
+}
+.error {
+  padding-top: 3px;
+  width: 100%;
+  text-align: center;
+  color: variables.$red;
+  font-weight: 700;
+  font-size: 1rem;
+}
