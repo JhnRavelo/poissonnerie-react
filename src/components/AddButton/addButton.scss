@@ -1,0 +1,36 @@
+@use "../../variables";
+@use "../../animations";
+
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 2px;
+  box-shadow: variables.$black 2px 1px 3px;
+  width: 100px;
+  height: 30px;
+  background-color: variables.$blue-deep;
+  color: aliceblue;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    svg {
+      animation: none;
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  svg {
+    animation: grow-shrink 0.6s infinite;
+  }
+}
