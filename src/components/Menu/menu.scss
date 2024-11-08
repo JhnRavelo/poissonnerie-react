@@ -1,0 +1,45 @@
+@use "../../variables";
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 20vw;
+  border-right: 2px solid variables.$blue-deep;
+  height: 85vh;
+  color: variables.$blue-deep;
+
+  h2 {
+    text-align: center;
+  }
+
+  .item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .item {
+      padding: 10px 10px 10px 35px;
+      transition: ease-in 0.2s;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: ease-in 0.2s;
+        text-decoration: none;
+        color: inherit;
+
+        svg {
+          color: inherit;
+        }
+      }
+      &:hover,
+      &.active {
+        a {
+          color: #fff;
+          transform: translateX(12px);
+        }
+        background-color: variables.$blue-deep;
+      }
+    }
+  }
+}
