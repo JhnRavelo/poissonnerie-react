@@ -1,0 +1,68 @@
+@use "../../variables";
+
+.dataTable {
+  margin-top: 10px;
+  .dataGrid {
+    background: white;
+    padding: 20px;
+
+    .MuiDataGrid-toolbarContainer {
+      flex-direction: row-reverse;
+    }
+
+    .MuiDataGrid-virtualScrollerRenderZone {
+      background-color: rgb(233, 230, 230);
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .action {
+      display: flex;
+      justify-content: space-between;
+
+      .weight-container {
+        display: flex;
+        transition: 0.2s ease;
+        cursor: pointer;
+        &:active {
+          transform: scale(0.96);
+        }
+        .kg-container {
+          color: variables.$blue-deep;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          span {
+            position: absolute;
+            font-size: 12px;
+            top: 7px;
+          }
+        }
+        .weight-plus {
+          color: variables.$blue-deep;
+          position: relative;
+          top: 1px;
+          right: 8px;
+        }
+      }
+
+      .svg-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
