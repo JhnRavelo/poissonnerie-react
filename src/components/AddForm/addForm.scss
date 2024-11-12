@@ -1,0 +1,36 @@
+.campagne-input-update {
+  height: 294px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.campagne-input-add {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 800px;
+  gap: 15px;
+}
+
+.input-file-entreprise {
+  margin-top: 25px;
+}
+
+.campagne-input-add-email {
+  overflow: hidden;
+  scrollbar-width: none;
+  overflow-x: scroll;
+  height: 52vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  column-gap: 20px;
+
+  .labelInput {
+    &.imgCampagne {
+      margin-top: 10px;
+      width: 350px;
+    }
+  }
+}
