@@ -1,0 +1,186 @@
+@use "../../variables";
+@use "../../animations";
+
+.add {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.524);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  .modal {
+    padding: 30px;
+    border-radius: 12px;
+    background-color: variables.$blue-back-ground;
+    position: relative;
+    border: 2px solid variables.$blue-border;
+    backdrop-filter: blur(10px);
+    animation: fade-down 1s ease;
+
+    h3 {
+      margin-bottom: 40px;
+      color: aliceblue;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 42px;
+      text-align: center;
+    }
+
+    .close {
+      position: absolute;
+      top: 0px;
+      border-radius: 0px 10px;
+      right: 0px;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: 900;
+      background-color: rgb(212, 14, 14);
+      color: aliceblue;
+      padding: 10px;
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+    }
+    ::placeholder {
+      color: #e5e5e5;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 800px;
+      gap: 15px;
+
+      .input-container {
+        width: 47%;
+
+        input {
+          height: 40px;
+        }
+      }
+    }
+
+    .delete-title-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+
+      img {
+        height: 50px;
+        width: 50px;
+      }
+
+      h3 {
+        color: #ff3f5b;
+        font-size: 28px;
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+    }
+
+    .para-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        color: aliceblue;
+        line-height: 25px;
+      }
+    }
+
+    .button__delete {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+
+      button {
+        padding: 10px 30px;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 18px;
+        background-color: rgb(219, 18, 18);
+        box-shadow: variables.$black-shadow 0px 3px 8px;
+        transition: all 0.6s ease;
+      }
+
+      button:hover {
+        cursor: pointer;
+        transform: scale(1.03);
+      }
+
+      button:active {
+        transform: scale(0.996);
+      }
+
+      button.cancel {
+        background-color: white;
+        color: #000;
+      }
+    }
+  }
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    width: 25%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: variables.$blue-radiant;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+    transition: 0.3s ease;
+    margin-top: 15px;
+    &:hover {
+      transform: scale(1.02);
+    }
+    &:active {
+      transform: scale(1);
+    }
+  }
+}
+.input-container {
+  label {
+    color: #ffffff;
+    display: block;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  input {
+    color: #ffffff;
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: variables.$soft-blue-back-ground;
+    border-radius: 3px;
+    border: none;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    outline: none;
+    &:focus {
+      border: 1px solid #fff;
+    }
+  }
+}
