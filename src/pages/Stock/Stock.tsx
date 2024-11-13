@@ -1,22 +1,13 @@
 import { columnStocks, stockFields } from "../../assets/ts/stocks";
 import AddButton from "../../components/AddButton/AddButton";
 import DataTable from "../../components/DataTable/DataTable";
-import { TypeDatas } from "../../context/StockContext";
 import useForm from "../../hooks/useForm";
+import useStock from "../../hooks/useStock";
 import { validateStock } from "../../utils/validate";
-
-const rows: TypeDatas = [
-  {
-    id: 1,
-    productName: "Cameron",
-    nbrDemiKg: 23,
-    nbrOneKg: 43,
-    priceOneKg: 40000,
-  },
-];
 
 const Stock = () => {
   const formContext = useForm();
+  const stockContext = useStock();
   const handleClick = () => {
     formContext?.setValidate(validateStock);
     formContext?.setOpenForm(true);
@@ -29,7 +20,7 @@ const Stock = () => {
   return (
     <>
       <AddButton handleClick={handleClick} />
-      <DataTable columns={columnStocks} rows={rows} slug="stock" />
+      <DataTable columns={columnStocks} rows={stockContext?.stocks} slug="stock" />
     </>
   );
 };

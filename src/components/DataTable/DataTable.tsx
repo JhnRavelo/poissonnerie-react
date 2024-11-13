@@ -11,11 +11,11 @@ import {
   validateNbrOneKg,
   validateStock,
 } from "../../utils/validate";
-import { TypeData } from "../../context/StockContext";
+import { TypeData, TypeDatas } from "../../context/StockContext";
 
 type DataTablePropsType = {
   columns: GridColDef[];
-  rows: object[];
+  rows: TypeDatas | undefined;
   slug: string;
 };
 
