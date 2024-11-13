@@ -4,12 +4,14 @@ export type ProviderPropsType = {
   children: React.ReactNode;
 };
 
+export type NbrNull = number | null;
+
 export type TypeData = {
-  id: number;
-  productName: string;
-  nbrDemiKg: number;
-  nbrOneKg: number;
-  priceOneKg: number;
+  id?: number;
+  productName?: string;
+  nbrDemiKg?: NbrNull;
+  nbrOneKg?: NbrNull;
+  priceOneKg?: NbrNull;
 };
 
 export type TypeDatas = TypeData[];

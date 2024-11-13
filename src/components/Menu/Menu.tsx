@@ -19,16 +19,17 @@ const Menu = () => {
       <h2>MENU</h2>
       <div className="item-container" ref={menuRef}>
         {menus.map((menu, index) => (
-          <div
-            className={index == 0 ? "item active" : "item"}
+          <Link
+            to={menu.url}
             onClick={(e) => active(e, menuRef)}
             key={index}
+            className={index == 0 ? "active" : ""}
           >
-            <Link to={menu.url}>
+            <div className="item">
               {menu.SVG}
               <span>{menu.name}</span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

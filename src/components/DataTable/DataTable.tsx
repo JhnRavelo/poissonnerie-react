@@ -4,6 +4,14 @@ import WeightSVG from "../../assets/svg/WeightSVG";
 import PlusBoldSVG from "../../assets/svg/PlusBoldSVG";
 import EditSVG from "../../assets/svg/EditSVG";
 import DeleteSVG from "../../assets/svg/DeleteSVG";
+import useForm from "../../hooks/useForm";
+import { stockFields } from "../../assets/ts/stocks";
+import {
+  validateNbrDemiKg,
+  validateNbrOneKg,
+  validateStock,
+} from "../../utils/validate";
+import { TypeData } from "../../context/StockContext";
 
 type DataTablePropsType = {
   columns: GridColDef[];
@@ -11,36 +19,91 @@ type DataTablePropsType = {
   slug: string;
 };
 
+type TypeHandleAddStock = (name: "nbrOneKg" | "nbrDemiKg", row: TypeData) => void;
+
+type TypeHandleAction = (row: TypeData) => void;
+
 const DataTable = (props: DataTablePropsType) => {
-  // const handleDelete = (id: number) => {};
+  const formContext = useForm();
+
+  const handleAddStock: TypeHandleAddStock = (name, row) => {
+    const firstPartTitle = "Ajouter des sachets ";
+    const stockFieldForAddStock = stockFields.filter(
+      (field) => field.name == name
+    );
+    formContext?.setFormFields(stockFieldForAddStock);
+    formContext?.setOpenForm(true);
+    formContext?.setUrl(name === "nbrDemiKg" ? "/stock/demiKg" : "/stock/oneKg");
+    formContext?.setType("add");
+    formContext?.setTitle(
+      name === "nbrDemiKg"
+        ? firstPartTitle + "de demi kilo"
+        : firstPartTitle + "d'un kilo"
+    );
+    formContext?.setValidate(
+      name === "nbrDemiKg" ? validateNbrDemiKg : validateNbrOneKg
+    );
+    formContext?.setUpdated(row);
+  };
+
+  const handleEdit: TypeHandleAction = (row) => {
+    formContext?.setOpenForm(true);
+    formContext?.setUrl("/stock");
+    formContext?.setFormFields(stockFields);
+    formContext?.setUpdated(row);
+    formContext?.setType("update");
+    formContext?.setTitle("Modifier ce produit");
+    formContext?.setValidate(validateStock);
+  };
+
+  const handleDelete: TypeHandleAction = (row) => {
+    formContext?.setOpenForm(true);
+    formContext?.setType("delete");
+    formContext?.setUrl("/stock");
+    formContext?.setDeleted(row);
+  };
 
   const actionColumn: GridColDef = {
     field: "action",
     headerName: "Action",
-    width: 360,
+    width: 300,
     headerAlign: "center",
     renderCell: (params) => {
       return (
         <div className="action">
-          <div className="weight-container">
+          <div
+            className="weight-container"
+            onClick={() => handleAddStock("nbrOneKg", params.row)}
+          >
             <div className="kg-container">
               <WeightSVG width="40" height="40" />
               <span>1 Kg</span>
             </div>
             <PlusBoldSVG width="15" height="15" className="weight-plus" />
           </div>
-          <div className="weight-container">
+          <div
+            className="weight-container"
+            onClick={() => handleAddStock("nbrDemiKg", params.row)}
+          >
             <div className="kg-container">
               <WeightSVG width="40" height="40" />
-              <span style={{fontSize:9}}>1/2Kg</span>
+              <span style={{ fontSize: 9 }}>1/2Kg</span>
             </div>
             <PlusBoldSVG width="15" height="15" className="weight-plus" />
           </div>
-          <div className="svg-action" style={{color: "green"}}>
+          <div
+            className="svg-action"
+            style={{ color: "green" }}
+            onClick={() => handleEdit(params.row)}
+          >
             <EditSVG width="30" height="30" />
           </div>
-          <div className="svg-action" style={{color: "red"}}>
-            <DeleteSVG width="30" height="30"/>
+          <div
+            className="svg-action"
+            style={{ color: "red" }}
+            onClick={() => handleDelete(params.row)}
+          >
+            <DeleteSVG width="30" height="30" />
           </div>
         </div>
       );

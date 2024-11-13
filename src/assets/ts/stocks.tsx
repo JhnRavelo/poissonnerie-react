@@ -1,4 +1,5 @@
 import { GridColDef } from "@mui/x-data-grid";
+import { TypeAddFormFields } from "../../context/FormContext";
 
 export const columnStocks: GridColDef[] = [
   {
@@ -30,5 +31,32 @@ export const columnStocks: GridColDef[] = [
     headerName: "Prix par Kg en Ar",
     width: 180,
     type: "string",
+  },
+];
+
+export const stockFields: TypeAddFormFields = [
+  {
+    name: "productName",
+    header: "Nom du produit",
+    type: "text",
+    placeholder: "Nom du produit stocké",
+  },
+  {
+    name: "priceOneKg",
+    header: "Prix par Kg en Ar",
+    type: "number",
+    placeholder: "Le prix en Ar de ce produit en Kg",
+  },
+  {
+    name: "nbrDemiKg",
+    header: "Nombre de sachet 0.5Kg",
+    type: "number",
+    placeholder: "Nombre de sachet de 1/2Kg en stock de ce produit",
+  },
+  {
+    name: "nbrOneKg",
+    header: "Nombre de sachet 1Kg",
+    type: "number",
+    placeholder: "Nombre de sachet d'1Kg en stock de ce produit",
   },
 ];

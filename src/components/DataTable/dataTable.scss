@@ -25,13 +25,15 @@
       display: flex;
       justify-content: space-between;
 
-      .weight-container {
-        display: flex;
+      &>div {
         transition: 0.2s ease;
         cursor: pointer;
         &:active {
-          transform: scale(0.96);
+          transform: scale(0.93);
         }
+      }
+      .weight-container {
+        display: flex;
         .kg-container {
           color: variables.$blue-deep;
           display: flex;

@@ -17,16 +17,16 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    .item {
-      padding: 10px 10px 10px 35px;
+    a {
       transition: ease-in 0.2s;
-      a {
+      text-decoration: none;
+      color: inherit;
+      padding: 10px 10px 10px 35px;
+      .item {
         display: flex;
         align-items: center;
         gap: 10px;
         transition: ease-in 0.2s;
-        text-decoration: none;
-        color: inherit;
 
         svg {
           color: inherit;
@@ -34,7 +34,7 @@
       }
       &:hover,
       &.active {
-        a {
+        .item {
           color: #fff;
           transform: translateX(12px);
         }
