@@ -6,7 +6,7 @@ export type AchatType = {
   field: string;
   productName: string;
   nbr: number;
-  price?: NbrNull;
+  price: NbrNull;
   total: NbrNull;
 };
 

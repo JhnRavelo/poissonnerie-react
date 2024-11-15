@@ -34,7 +34,6 @@ const NbrSachet = ({ params }: NbrSachetPropsType) => {
         onClick={() => {
           setValue((prev) => {
             if (prev && prev > 0) {
-              console.log(params.field, prev);
               achatContext?.setAchats((prev) => {
                 const price =
                   params.field == "nbrDemiKg" && params?.row?.priceOneKg

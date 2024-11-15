@@ -1,13 +1,40 @@
+import { toast } from "react-toastify";
 import { columnAchats } from "../../assets/ts/achats";
 import DataTable from "../../components/DataTable/DataTable";
 import FormButton from "../../components/FormButton/FormButton";
 import useAchat from "../../hooks/useAchat";
 import useStock from "../../hooks/useStock";
 import "./achat.scss";
+import { TypeDatas } from "../../context/StockContext";
+import { axiosDefault } from "../../api/axios";
+import useForm from "../../hooks/useForm";
 
 const Achat = () => {
   const stockContext = useStock();
   const achatContext = useAchat();
+  const formContext = useForm();
+
+  const handleAchat = async () => {
+    if (achatContext?.achats && achatContext?.achats.length > 0) {
+      const formData: { allAchats: TypeDatas } = {
+        allAchats: achatContext.achats,
+      };
+      try {
+        const res = await axiosDefault.post("/achat", formData);
+        if (res.data.success) {
+          formContext?.setIsFetch((prev) => !prev);
+          achatContext.setAchats([]);
+          toast.success(res.data.message);
+        } else {
+          toast.error(res.data.message);
+        }
+      } catch (error) {
+        toast.error("Erreur serveur");
+        console.log(error);
+      }
+    } else toast.error("Pas d'achats");
+  };
+
   return (
     <div className="achat-container">
       <div className="dataTable-container">
@@ -52,7 +79,11 @@ const Achat = () => {
             </span>
           </div>
           <div className="achat-button">
-            <FormButton title="Confirmez" type="button" onClick={() => {}} />
+            <FormButton
+              title="Confirmez"
+              type="button"
+              onClick={() => handleAchat()}
+            />
             <FormButton
               title="Annulez"
               type="button"
