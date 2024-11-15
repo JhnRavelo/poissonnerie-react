@@ -41,16 +41,18 @@
           justify-content: center;
 
           span {
-            position: absolute;
+            z-index: 2;
+            position: relative;
             font-size: 12px;
             top: 7px;
+            right: 32px;
           }
         }
         .weight-plus {
           color: variables.$blue-deep;
           position: relative;
           top: 1px;
-          right: 8px;
+          right: 32px;
         }
       }
 

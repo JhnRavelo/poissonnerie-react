@@ -1,0 +1,66 @@
+@use "../../variables";
+
+.achat-container {
+  display: flex;
+  gap: 10px;
+
+  .dataTable-container {
+    width: 445px;
+  }
+
+  .calcul-container {
+    flex: 1;
+
+    h2 {
+      font-size: 38px;
+      font-weight: 800;
+      color: variables.$blue-deep;
+      text-align: center;
+    }
+
+    .calcul-content {
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      ul {
+        margin-top: 20px;
+        height: 60vh;
+        max-height: 60vh;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        li {
+          display: flex;
+          justify-content: space-between;
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+      
+      .calcul-total {
+        font-weight: 600;
+      }
+      .achat-total {
+        margin-bottom: 20px;
+      }
+
+      .achat-button {
+        display: flex;
+        button {
+            width: 50%;
+        }
+      }
+    }
+
+    .achat-total {
+      display: flex;
+      justify-content: space-between;
+      span {
+        font-size: 24px;
+      }
+    }
+  }
+}

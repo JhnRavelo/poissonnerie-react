@@ -19,7 +19,10 @@ type DataTablePropsType = {
   slug: string;
 };
 
-type TypeHandleAddStock = (name: "nbrOneKg" | "nbrDemiKg", row: TypeData) => void;
+type TypeHandleAddStock = (
+  name: "nbrOneKg" | "nbrDemiKg",
+  row: TypeData
+) => void;
 
 type TypeHandleAction = (row: TypeData) => void;
 
@@ -33,7 +36,9 @@ const DataTable = (props: DataTablePropsType) => {
     );
     formContext?.setFormFields(stockFieldForAddStock);
     formContext?.setOpenForm(true);
-    formContext?.setUrl(name === "nbrDemiKg" ? "/stock/demiKg" : "/stock/oneKg");
+    formContext?.setUrl(
+      name === "nbrDemiKg" ? "/stock/demiKg" : "/stock/oneKg"
+    );
     formContext?.setType("add");
     formContext?.setTitle(
       name === "nbrDemiKg"
@@ -115,7 +120,11 @@ const DataTable = (props: DataTablePropsType) => {
       <DataGrid
         className="dataGrid"
         rows={props.rows}
-        columns={[...props.columns, actionColumn]}
+        columns={
+          props.slug == "stock"
+            ? [...props.columns, actionColumn]
+            : [...props.columns]
+        }
         initialState={{
           pagination: {
             paginationModel: {
@@ -123,6 +132,7 @@ const DataTable = (props: DataTablePropsType) => {
             },
           },
         }}
+        pageSizeOptions={[10]}
         rowHeight={40}
         slots={{ toolbar: GridToolbar }}
         disableRowSelectionOnClick
