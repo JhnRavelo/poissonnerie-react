@@ -1,10 +1,12 @@
+import { SVGPropsType } from "./StockSVG";
 
-const MoinsCircleSVG = () => {
+const MoinsCircleSVG = ({ width, height, onClick }: SVGPropsType) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      width={width}
+      height={height}
+      onClick={onClick}
       viewBox="0 0 24 24"
     >
       <path
