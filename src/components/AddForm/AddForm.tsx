@@ -6,6 +6,7 @@ import "./addForm.scss";
 import ErrorForm from "./ErrorForm/ErrorForm";
 import { TypeData } from "../../context/StockContext";
 import { axiosDefault } from "../../api/axios";
+import FormButton from "../FormButton/FormButton";
 
 type FormFieldsPropsType = {
   initialValues: TypeData;
@@ -79,20 +80,17 @@ const FormFields = ({ initialValues }: FormFieldsPropsType) => {
                     </div>
                   ))}
               </div>
-              <div className="button-container">
-                <button
-                  type="submit"
-                  onClick={() => {
-                    formContext?.formFields.map((item) => {
-                      if (errors[item.name]) {
-                        toast.error(errors[item.name]);
-                      }
-                    });
-                  }}
-                >
-                  Enregistrer
-                </button>
-              </div>
+              <FormButton
+                onClick={() => {
+                  formContext?.formFields.map((item) => {
+                    if (errors[item.name]) {
+                      toast.error(errors[item.name]);
+                    }
+                  });
+                }}
+                title="Enregistrer"
+                type="submit"
+              />
             </Form>
           )}
         </Formik>
