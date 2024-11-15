@@ -8,7 +8,6 @@ import "./achat.scss";
 const Achat = () => {
   const stockContext = useStock();
   const achatContext = useAchat();
-  console.log(achatContext?.achats);
   return (
     <div className="achat-container">
       <div className="dataTable-container">
@@ -57,7 +56,10 @@ const Achat = () => {
             <FormButton
               title="Annulez"
               type="button"
-              onClick={() => {}}
+              onClick={() => {
+                achatContext?.setAchats([]);
+                achatContext?.setAction("reset");
+              }}
               style={{ background: "red" }}
             />
           </div>

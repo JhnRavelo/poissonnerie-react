@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { GridRenderCellParams, GridTreeNodeWithRender } from "@mui/x-data-grid";
 import "./nbrSachet.scss";
 import MoinsCircleSVG from "../../assets/svg/MoinsCircleSVG";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAchat from "../../hooks/useAchat";
 import { TypeData } from "../../context/StockContext";
 
@@ -16,6 +17,14 @@ type NbrSachetPropsType = {
 const NbrSachet = ({ params }: NbrSachetPropsType) => {
   const [value, setValue] = useState(params.value);
   const achatContext = useAchat();
+
+  useEffect(() => {
+    if (achatContext?.action === "reset") {
+      setValue(params.value);
+      achatContext.setAction("decrease");
+    }
+  }, [achatContext?.action, params.value]);
+
   return (
     <div className="nbr-sachet-container">
       <span>{value ? value : 0}</span>
