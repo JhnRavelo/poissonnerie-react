@@ -34,6 +34,8 @@ type TypeAddFormContext = {
   setYears: React.Dispatch<React.SetStateAction<string[]>>;
   year: string;
   setYear: React.Dispatch<React.SetStateAction<string>>;
+  month: string;
+  setMonth: React.Dispatch<React.SetStateAction<string>>;
   validate: TypeValidate;
   setValidate: React.Dispatch<React.SetStateAction<TypeValidate>>;
 };
@@ -54,6 +56,10 @@ export const FormProvider = ({ children }: ProviderPropsType) => {
   const [year, setYear] = useState<string>(() => {
     const date = new Date();
     return date.getFullYear().toString();
+  });
+  const [month, setMonth] = useState<string>(() => {
+    const date = new Date();
+    return (date.getMonth() + 1).toString();
   });
 
   return (
@@ -81,6 +87,8 @@ export const FormProvider = ({ children }: ProviderPropsType) => {
         setYears,
         year,
         setYear,
+        month,
+        setMonth,
       }}
     >
       {children}

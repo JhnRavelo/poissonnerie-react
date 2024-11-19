@@ -10,10 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import useStock from "./hooks/useStock";
 import { axiosDefault } from "./api/axios";
+import useHistory from "./hooks/useHistory";
 
 function App() {
   const formContext = useForm();
-  const StockContext = useStock();
+  const stockContext = useStock();
+  const historyContext = useHistory();
 
   useEffect(() => {
     (async () => {
@@ -21,7 +23,13 @@ function App() {
         const fetchStocks = await axiosDefault.get("/stock");
 
         if (fetchStocks.data.success) {
-          StockContext?.setStocks(fetchStocks.data.datas);
+          stockContext?.setStocks(fetchStocks.data.datas);
+        } else toast.error(fetchStocks.data.message);
+        const fetchAchats = await axiosDefault.get("/achat");
+
+        if (fetchAchats.data.success) {
+          historyContext?.setHistories(fetchAchats.data.datas);
+          formContext?.setYears(fetchAchats.data.years);
         } else toast.error(fetchStocks.data.message);
       } catch (error) {
         console.log(error);
