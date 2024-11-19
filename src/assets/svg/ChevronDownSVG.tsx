@@ -1,4 +1,4 @@
-import { SVGPropsType } from "./DashboardSVG";
+import { SVGPropsType } from "./StockSVG";
 
 const ChevronDownSVG = ({ width, height, svgRef, className }: SVGPropsType) => {
   return (

@@ -1,4 +1,4 @@
-import { SVGPropsType } from "./DashboardSVG";
+import { SVGPropsType } from "./StockSVG";
 
 const PLusSVG = ({ width, height, className, onClick }: SVGPropsType) => {
   return (
