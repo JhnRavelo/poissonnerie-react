@@ -19,7 +19,9 @@ const Modal = () => {
       : formContext?.url === "/stock/demiKg"
       ? { nbrDemiKg: 0 }
       : formContext?.url === "/stock/oneKg"
-      ? { nbrOneKg: 0 }
+      ? { nbrOneKg: 0 } 
+      : formContext?.url === "/stock/Kg" 
+      ? { nbrKg: "0"}
       : { productName: "", priceOneKg: 0, nbrDemiKg: 0, nbrOneKg: 0, nbrKg: "0" };
 
   return (

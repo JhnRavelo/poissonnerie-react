@@ -4,7 +4,7 @@ import { TypeValidate } from "../utils/validate";
 
 export type TypeTypeModal = "add" | "delete" | "update";
 
-export type TypeUrl = "/stock" | "" | "/stock/demiKg" | "/stock/oneKg";
+export type TypeUrl = "/stock" | "" | "/stock/demiKg" | "/stock/oneKg" | "/stock/Kg";
 
 export type TypeAddFormFields = {
   name: "productName" | "nbrDemiKg" | "nbrOneKg" | "priceOneKg" | "nbrKg";

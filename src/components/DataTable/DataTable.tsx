@@ -7,6 +7,7 @@ import DeleteSVG from "../../assets/svg/DeleteSVG";
 import useForm from "../../hooks/useForm";
 import { stockFields } from "../../assets/ts/stocks";
 import {
+  validateKg,
   validateNbrDemiKg,
   validateNbrOneKg,
   validateStock,
@@ -20,7 +21,7 @@ type DataTablePropsType = {
 };
 
 type TypeHandleAddStock = (
-  name: "nbrOneKg" | "nbrDemiKg",
+  name: "nbrOneKg" | "nbrDemiKg" | "nbrKg",
   row: TypeData
 ) => void;
 
@@ -30,23 +31,24 @@ const DataTable = (props: DataTablePropsType) => {
   const formContext = useForm();
 
   const handleAddStock: TypeHandleAddStock = (name, row) => {
-    const firstPartTitle = "Ajouter des sachets ";
+    const firstPartTitle = "Ajouter ";
     const stockFieldForAddStock = stockFields.filter(
       (field) => field.name == name
     );
     formContext?.setFormFields(stockFieldForAddStock);
     formContext?.setOpenForm(true);
     formContext?.setUrl(
-      name === "nbrDemiKg" ? "/stock/demiKg" : "/stock/oneKg"
+      name === "nbrDemiKg" ? "/stock/demiKg" : name === "nbrKg" ? "/stock/Kg" : "/stock/oneKg"
     );
     formContext?.setType("add");
     formContext?.setTitle(
       name === "nbrDemiKg"
-        ? firstPartTitle + "de demi kilo"
-        : firstPartTitle + "d'un kilo"
+        ? firstPartTitle + " des sachets de demi kilo"
+        : name === "nbrKg" ? firstPartTitle + " des stocks en Kg"
+          : firstPartTitle + " des sachets d'un kilo"
     );
     formContext?.setValidate(
-      name === "nbrDemiKg" ? validateNbrDemiKg : validateNbrOneKg
+      name === "nbrDemiKg" ? validateNbrDemiKg : name === "nbrKg" ? validateKg : validateNbrOneKg
     );
     formContext?.setUpdated(row);
   };
@@ -98,11 +100,10 @@ const DataTable = (props: DataTablePropsType) => {
           </div>
           <div
             className="weight-container"
-            onClick={() => handleAddStock("nbrDemiKg", params.row)}
+            onClick={() => handleAddStock("nbrKg", params.row)}
           >
             <div className="kg-container">
               <WeightSVG width="40" height="40" />
-              {/* <span style={{ fontSize: 9 }}>1/2Kg</span> */}
             </div>
             <PlusBoldSVG width="15" height="15" className="weight-plus without" />
           </div>

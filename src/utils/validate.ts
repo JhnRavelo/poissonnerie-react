@@ -37,7 +37,12 @@ export type TypeValidate =
       nbrOneKg: undefined;
     },
     ""
-  >;
+  >
+  | Yup.ObjectSchema<{
+    nbrKg: string;
+  }, Yup.AnyObject, {
+    nbrKg: undefined;
+  }, "">;
 
 export const validateStock = Yup.object({
   productName: Yup.string().required("Vous devez mettre le nom du produit"),
@@ -53,7 +58,9 @@ export const validateStock = Yup.object({
     .required("Si vous n'avez pas de sachet d'un kilo, mettez zero")
     .min(0, "Ce nombre ne pas être négative")
     .integer("Ce nombre doit être un entier"),
-  nbrKg: Yup.string().matches(/^0|[1-9]\d*(,\d+)?$/, "doit etre un nombre et doit etre positif")
+  nbrKg: Yup.string()
+    .required("Si vous stock en kilo, mettez zero")
+    .matches(/^(0|[1-9]\d*)(\.\d+)?$/, "doit etre un nombre et doit etre positif")
 });
 
 export const validateNbrDemiKg = Yup.object({
@@ -69,3 +76,9 @@ export const validateNbrOneKg = Yup.object({
     .min(0, "Ce nombre ne pas être négative")
     .integer("Ce nombre doit être un entier"),
 });
+
+export const validateKg = Yup.object({
+  nbrKg: Yup.string()
+    .required("Si vous stock en kilo, mettez zero")
+    .matches(/^(0|[1-9]\d*)(\.\d+)?$/, "doit etre un nombre et doit etre positif")
+})
