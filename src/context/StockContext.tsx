@@ -12,6 +12,7 @@ export type TypeData = {
   nbrDemiKg?: number;
   nbrOneKg?: number;
   priceOneKg?: number;
+  nbrKg?: string;
 };
 
 export type TypeDatas = TypeData[];

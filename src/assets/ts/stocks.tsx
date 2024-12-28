@@ -27,9 +27,15 @@ export const columnStocks: GridColDef[] = [
     type: "string",
   },
   {
+    field: "nbrKg",
+    headerName: "Stock en Kg",
+    width: 150,
+    type: "string",
+  },
+  {
     field: "priceOneKg",
     headerName: "Prix par Kg en Ar",
-    width: 180,
+    width: 150,
     type: "string",
   },
 ];
@@ -59,4 +65,11 @@ export const stockFields: TypeAddFormFields = [
     type: "number",
     placeholder: "Nombre de sachet d'1Kg en stock de ce produit",
   },
+  {
+    name: "nbrKg",
+    header: "Nombre en stock en Kg",
+    type: "text",
+    placeholder: "Nombre en stock de ce produit en Kg",
+  },
+
 ];

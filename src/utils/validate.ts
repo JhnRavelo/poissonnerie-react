@@ -2,42 +2,42 @@ import * as Yup from "yup";
 
 export type TypeValidate =
   | Yup.ObjectSchema<
-      {
-        productName: string;
-        priceOneKg: number;
-        nbrDemiKg: number;
-        nbrOneKg: number;
-      },
-      Yup.AnyObject,
-      {
-        productName: undefined;
-        priceOneKg: undefined;
-        nbrDemiKg: undefined;
-        nbrOneKg: undefined;
-      },
-      ""
-    >
+    {
+      productName: string;
+      priceOneKg: number;
+      nbrDemiKg: number;
+      nbrOneKg: number;
+    },
+    Yup.AnyObject,
+    {
+      productName: undefined;
+      priceOneKg: undefined;
+      nbrDemiKg: undefined;
+      nbrOneKg: undefined;
+    },
+    ""
+  >
   | null
   | Yup.ObjectSchema<
-      {
-        nbrDemiKg: number;
-      },
-      Yup.AnyObject,
-      {
-        nbrDemiKg: undefined;
-      },
-      ""
-    >
+    {
+      nbrDemiKg: number;
+    },
+    Yup.AnyObject,
+    {
+      nbrDemiKg: undefined;
+    },
+    ""
+  >
   | Yup.ObjectSchema<
-      {
-        nbrOneKg: number;
-      },
-      Yup.AnyObject,
-      {
-        nbrOneKg: undefined;
-      },
-      ""
-    >;
+    {
+      nbrOneKg: number;
+    },
+    Yup.AnyObject,
+    {
+      nbrOneKg: undefined;
+    },
+    ""
+  >;
 
 export const validateStock = Yup.object({
   productName: Yup.string().required("Vous devez mettre le nom du produit"),
@@ -53,6 +53,7 @@ export const validateStock = Yup.object({
     .required("Si vous n'avez pas de sachet d'un kilo, mettez zero")
     .min(0, "Ce nombre ne pas être négative")
     .integer("Ce nombre doit être un entier"),
+  nbrKg: Yup.string().matches(/^0|[1-9]\d*(,\d+)?$/, "doit etre un nombre et doit etre positif")
 });
 
 export const validateNbrDemiKg = Yup.object({

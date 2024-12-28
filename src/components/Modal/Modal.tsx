@@ -14,12 +14,13 @@ const Modal = () => {
           priceOneKg: updated.priceOneKg,
           nbrDemiKg: updated.nbrDemiKg,
           nbrOneKg: updated.nbrOneKg,
+          nbrKg: updated.nbrKg,
         }
       : formContext?.url === "/stock/demiKg"
-      ? { nbrDemiKg: null }
+      ? { nbrDemiKg: 0 }
       : formContext?.url === "/stock/oneKg"
-      ? { nbrOneKg: null }
-      : { productName: "", priceOneKg: null, nbrDemiKg: null, nbrOneKg: null };
+      ? { nbrOneKg: 0 }
+      : { productName: "", priceOneKg: 0, nbrDemiKg: 0, nbrOneKg: 0, nbrKg: "0" };
 
   return (
     <div className="add">

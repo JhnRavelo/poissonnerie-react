@@ -97,6 +97,16 @@ const DataTable = (props: DataTablePropsType) => {
             <PlusBoldSVG width="15" height="15" className="weight-plus" />
           </div>
           <div
+            className="weight-container"
+            onClick={() => handleAddStock("nbrDemiKg", params.row)}
+          >
+            <div className="kg-container">
+              <WeightSVG width="40" height="40" />
+              {/* <span style={{ fontSize: 9 }}>1/2Kg</span> */}
+            </div>
+            <PlusBoldSVG width="15" height="15" className="weight-plus without" />
+          </div>
+          <div
             className="svg-action"
             style={{ color: "green" }}
             onClick={() => handleEdit(params.row)}

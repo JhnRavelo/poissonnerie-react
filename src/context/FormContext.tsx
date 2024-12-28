@@ -7,7 +7,7 @@ export type TypeTypeModal = "add" | "delete" | "update";
 export type TypeUrl = "/stock" | "" | "/stock/demiKg" | "/stock/oneKg";
 
 export type TypeAddFormFields = {
-  name: "productName" | "nbrDemiKg" | "nbrOneKg" | "priceOneKg";
+  name: "productName" | "nbrDemiKg" | "nbrOneKg" | "priceOneKg" | "nbrKg";
   header: string;
   type: string;
   placeholder: string;
