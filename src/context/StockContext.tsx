@@ -9,9 +9,9 @@ export type NbrNull = number | null;
 export type TypeData = {
   id?: number;
   productName?: string;
-  nbrDemiKg?: NbrNull;
-  nbrOneKg?: NbrNull;
-  priceOneKg?: NbrNull;
+  nbrDemiKg?: number;
+  nbrOneKg?: number;
+  priceOneKg?: number;
 };
 
 export type TypeDatas = TypeData[];

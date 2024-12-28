@@ -21,11 +21,12 @@ const FormFields = ({ initialValues }: FormFieldsPropsType) => {
       toast.error("Erreur valeur nulle");
       return;
     }
+    console.log(values)
     const formData = new FormData();
     const valuesEntries = Object.entries(values);
     formData.append("id", `${formContext?.updated?.id}`);
     valuesEntries.forEach(([key, value]) => {
-      formData.append(`${key}`, value ? value.toString() : "");
+      formData.append(`${key}`, value.toString());
     });
 
     try {
