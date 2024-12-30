@@ -16,14 +16,14 @@ export const columnStocks: GridColDef[] = [
   },
   {
     field: "nbrDemiKg",
-    headerName: "Nombre de sachet 0.5Kg",
-    width: 200,
+    headerName: "Sachet demi Kg",
+    width: 140,
     type: "string",
   },
   {
     field: "nbrOneKg",
-    headerName: "Nombre de sachet 1Kg",
-    width: 180,
+    headerName: "Sachet un Kg",
+    width: 140,
     type: "string",
   },
   {
@@ -34,7 +34,7 @@ export const columnStocks: GridColDef[] = [
   },
   {
     field: "priceOneKg",
-    headerName: "Prix par Kg en Ar",
+    headerName: "Prix du Kg en Ar",
     width: 150,
     type: "string",
   },

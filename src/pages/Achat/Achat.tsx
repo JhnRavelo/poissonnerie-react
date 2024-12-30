@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { toast } from "react-toastify";
 import { columnAchats } from "../../assets/ts/achats";
 import DataTable from "../../components/DataTable/DataTable";
@@ -8,11 +9,13 @@ import "./achat.scss";
 import { TypeDatas } from "../../context/StockContext";
 import { axiosDefault } from "../../api/axios";
 import useForm from "../../hooks/useForm";
+import { useEffect, useState } from "react";
 
 const Achat = () => {
   const stockContext = useStock();
   const achatContext = useAchat();
   const formContext = useForm();
+  const [once, setOnce] = useState(true);
 
   const handleAchat = async () => {
     if (achatContext?.achats && achatContext?.achats.length > 0) {
@@ -35,6 +38,14 @@ const Achat = () => {
     } else toast.error("Pas d'achats");
   };
 
+  useEffect(() => {
+    if (stockContext?.stocks && stockContext.stocks.length > 0 && once) {
+      achatContext?.setAchats([]);
+      achatContext?.setValues(stockContext.stocks);
+      setOnce(false);
+    }
+  }, [once, stockContext?.stocks]);
+
   return (
     <div className="achat-container">
       <div className="dataTable-container">
@@ -53,14 +64,21 @@ const Achat = () => {
               achatContext?.achats.map((achat, index) => (
                 <li key={index}>
                   <span className="calcul-desc">
-                    {achat.nbr +
-                      " sachet(s) " +
-                      `${achat.field == "nbrDemiKg" ? "de demi" : "d'un"}` +
-                      " kilo de " +
-                      achat.productName +
-                      " X " +
-                      achat.price +
-                      " ="}
+                    {achat.field != "nbrKg"
+                      ? achat.nbr +
+                        " sachet(s) " +
+                        `${achat.field == "nbrDemiKg" ? "de demi" : "d'un"}` +
+                        " kilo de " +
+                        achat.productName +
+                        " X " +
+                        achat.price +
+                        " ="
+                      : achat.nbr * 1000 +
+                        "g de " +
+                        achat.productName +
+                        " X " +
+                        achat.price +
+                        " ="}
                   </span>
                   <span className="calcul-total">{achat.total + " Ar"}</span>
                 </li>

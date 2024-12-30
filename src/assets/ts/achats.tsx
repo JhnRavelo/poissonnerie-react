@@ -34,4 +34,14 @@ export const columnAchats: GridColDef[] = [
       return <NbrSachet params={params} />;
     },
   },
+  {
+    field: "nbrKg",
+    headerName: "Kilo(s)",
+    headerAlign: "center",
+    width: 100,
+    type: "string",
+    renderCell: (params) => {
+      return <NbrSachet params={params} />;
+    },
+  },
 ];

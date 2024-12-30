@@ -6,7 +6,7 @@ export type HistoryType = {
   nbr: number;
   price: NbrNull;
   total: NbrNull;
-  type: "d'un" | "de demi";
+  type: "d'un" | "de demi" | "gram";
   year: string;
   month: string;
   day: string;

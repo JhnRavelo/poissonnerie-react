@@ -89,14 +89,21 @@ const History = () => {
                     .map((achat, index) => (
                       <li key={index}>
                         <span className="calcul-desc">
-                          {achat.nbr +
-                            " sachet(s) " +
-                            achat.type +
-                            " kilo de " +
-                            achat.product.productName +
-                            " X " +
-                            achat.price +
-                            " ="}
+                          {achat.type != "gram"
+                            ? achat.nbr +
+                              " sachet(s) " +
+                              achat.type +
+                              " kilo de " +
+                              achat.product.productName +
+                              " X " +
+                              achat.price +
+                              " ="
+                            : achat.nbr * 1000 +
+                              "g de " +
+                              achat.product.productName +
+                              " X " +
+                              achat.price +
+                              " ="}
                         </span>
                         <span className="calcul-total">
                           {achat.total + " Ar"}

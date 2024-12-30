@@ -80,5 +80,5 @@ export const validateNbrOneKg = Yup.object({
 export const validateKg = Yup.object({
   nbrKg: Yup.string()
     .required("Si vous stock en kilo, mettez zero")
-    .matches(/^(0|[1-9]\d*)(\.\d+)?$/, "doit etre un nombre et doit etre positif")
+    .matches(/^(0|[1-9]\d*)(\.\d{1,3})?$/, "doit etre un nombre et doit etre positif et utiliser un point au lieu de virgule, ne doit pas depasser trois chiffre apres virgule")
 })

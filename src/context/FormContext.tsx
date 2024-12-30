@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { ProviderPropsType, TypeData } from "./StockContext";
 import { TypeValidate } from "../utils/validate";
 
-export type TypeTypeModal = "add" | "delete" | "update";
+export type TypeTypeModal = "add" | "delete" | "update" | "kg";
 
 export type TypeUrl = "/stock" | "" | "/stock/demiKg" | "/stock/oneKg" | "/stock/Kg";
 
